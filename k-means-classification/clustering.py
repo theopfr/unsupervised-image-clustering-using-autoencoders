@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from tqdm import tqdm
 from scipy.stats import entropy
+import math
 
 
 class KMeans:
@@ -104,7 +105,12 @@ class KMeans:
                     break
 
         print("class-distributions:", class_distributions)
-        print("entropy:", entropy(class_distributions))
+
+        # calculate entropy
+        class_probabilities = np.array(class_distributions) / sum(class_distributions)
+        entropy = - sum(class_probabilities * (np.log(class_probabilities) / np.log(2)))
+
+        print("entropy:", entropy)
 
         cluster = cluster[:144]
         fig, axs = plt.subplots(12, 12)
@@ -114,9 +120,12 @@ class KMeans:
                 axs[i][j].imshow(self.images[cluster[counter]][0])
                 counter += 1
 
+        fig.suptitle("entropy: " + str(round(entropy, 5)))
         plt.show()
 
 kMeans = KMeans(dataset_path="dataset/train_bottlenecks.npy", train_images_path="../autoencoder/datasets/train_dataset.npy", classes=3)
-clusters = kMeans.cluster(steps=10)
+clusters = kMeans.cluster(steps=15)
 
+kMeans.supervise_cluster(clusters=clusters, c=0)
+kMeans.supervise_cluster(clusters=clusters, c=1)
 kMeans.supervise_cluster(clusters=clusters, c=2)
