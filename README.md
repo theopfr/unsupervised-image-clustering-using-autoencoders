@@ -17,6 +17,16 @@ K-means clustering was applied on the bottleneck-datapoints with K=3, since the 
 
 ## | results:
 
+<details>
+<summary>Click to see reconstructed images</summary>
+
+![plane_reconstruction](readme_images/plane_reconstruction.png)
+![dog_reconstruction](readme_images/dog_reconstruction.png)
+![truck_reconstruction](readme_images/truck_reconstruction.png)
+
+</details>
+
+
 To measure the performance of the clustering, you can calculate the entropy of each cluster. We want every cluster to show (in the perfect case) just one class, therefore the better the clustering the lower the entropy.
 
 <p align="center"> 
