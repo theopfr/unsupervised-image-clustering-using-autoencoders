@@ -1,8 +1,7 @@
 ## unsupervised image classification by creating k-means clusters from bottleneck-layers of an autoencoder
 
-## | experiment:
-
-Since the information about what object an image shows is within the image itself, can you compress that certain information using an autoencoder and cluster it to achieve unsupervised image classification?
+## | procedure:
+Create bottlenecks of the CIFAR-10 dataset (only the plane, dog and truck class) and try to group them using k-means clustering.
 
 ## | autoencoder:
 ![architecture](readme_images/architecture.png)
